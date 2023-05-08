@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/card_view.xml" value="0.223731884057971" />
+        <entry key="app/src/main/res/layout/example_fragment.xml" value="0.21195652173913043" />
       </map>
     </option>
   </component>
