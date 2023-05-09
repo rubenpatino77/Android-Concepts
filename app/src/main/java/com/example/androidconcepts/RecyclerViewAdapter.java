@@ -1,7 +1,6 @@
 package com.example.androidconcepts;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -34,7 +33,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<cardViewHolder> {
     public void onBindViewHolder(@NonNull cardViewHolder holder, int position) {
         holder.container.setId(position + 1);
         fragmentManager.beginTransaction().add(holder.container.getId(), allFragments.get(position)).commit();
-        holder.container.setBackgroundColor(Color.parseColor("#555555"));
     }
 
     @Override

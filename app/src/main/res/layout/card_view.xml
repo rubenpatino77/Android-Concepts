@@ -2,8 +2,9 @@
 <androidx.fragment.app.FragmentContainerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@android:dimen/thumbnail_height"
+    android:layout_height="300dp"
     android:id="@+id/cardFragmentContainer"
-    android:layout_margin="20dp">
+    android:layout_margin="10dp"
+    android:background="#CCCCCC">
 
 </androidx.fragment.app.FragmentContainerView>

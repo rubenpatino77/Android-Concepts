@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getFragments(ArrayList<Fragment> fragmentsList){
-        fragmentsList.add(new localDataSenderFragment());
-        fragmentsList.add(new localDataReceiverFragment());
+        fragmentsList.add(new LocalDataSenderFragment());
+        fragmentsList.add(new LocalDataReceiverFragment());
     }
 
     public void displayRecyclerViews(ArrayList<Fragment> fragmentsList){

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Android Concepts</string>
+    <string name="sender_fragment_title">Let\'s use a bundle to send an object. Choose the array to send</string>
+    <string name="arr_example_1">[1, 2, 3]</string>
+    <string name="button_sender_title">Send This Object</string>
+    <string name="arr_example_2">[3, 2, 1]</string>
+    <string name="arr_example_3">[0, 0, 0]</string>
+    <string name="receiving_fragment_title">I am the receiving fragment.\n\nThis is the object I received via Bundle:</string>
+    <string name="receiving_framgent_data">Nothing yet :(</string>
 </resources>
