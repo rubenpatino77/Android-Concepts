@@ -6,5 +6,7 @@
     <string name="arr_example_2">[3, 2, 1]</string>
     <string name="arr_example_3">[0, 0, 0]</string>
     <string name="receiving_fragment_title">I am the receiving fragment.\n\nThis is the object I received via Bundle:</string>
-    <string name="receiving_framgent_data">Nothing yet :(</string>
+    <string name="receiving_fragment_data">Nothing yet :(</string>
+    <string name="api_fetch_explanation">Here we use Retrofit to fetch api data and a BroadcastReceiver to retrieve the string when the fetch is completed. Enter a CA city.</string>
+    <string name="enter_city">Enter city</string>
 </resources>
