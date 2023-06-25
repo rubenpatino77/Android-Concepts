@@ -9,4 +9,5 @@
     <string name="receiving_fragment_data">Nothing yet :(</string>
     <string name="api_fetch_explanation">Here we use Retrofit to fetch api data and a BroadcastReceiver to retrieve the string when the fetch is completed. Enter a CA city.</string>
     <string name="enter_city">Enter city</string>
+    <string name="fahrenheit_format">%s \u00B0F</string>
 </resources>

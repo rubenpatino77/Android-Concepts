@@ -4,6 +4,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.IOException;
@@ -16,15 +18,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiFetchService extends Service implements WeatherAPIFetch {
 
-    private String location;
+    private String city;
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
 
         Toast.makeText(this, "Running service", Toast.LENGTH_SHORT).show();
         if (intent != null) {
-            String city = intent.getStringExtra("location");
-            location = city;
+            city = intent.getStringExtra("location");
         }
         try {
             getApiData();
@@ -44,7 +45,7 @@ public class ApiFetchService extends Service implements WeatherAPIFetch {
     public void getApiData() throws IOException {
         final String BASE_URL = "https://api.weatherapi.com/v1/";
         final String API_KEY = "7a077feb1c3e4e4a9fe172123231505";
-        final String ANAHEIM_QUERY = location;
+        final String ANAHEIM_QUERY = city;
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -55,12 +56,15 @@ public class ApiFetchService extends Service implements WeatherAPIFetch {
         Call<WeatherResponse> call = weatherAPIFetch.getWeather(API_KEY, ANAHEIM_QUERY);
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
-            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+            public void onResponse(@NonNull Call<WeatherResponse> call, @NonNull Response<WeatherResponse> response) {
                 if (response.isSuccessful()) {
                     WeatherResponse weatherResponse = response.body();
                     // Access parsed JSON data from the weatherResponse object
 
-                    String temperature = weatherResponse.current.temp_f;
+                    String temperature = null;
+                    if (weatherResponse != null) {
+                        temperature = weatherResponse.current.temp_f;
+                    }
 
                     Intent broadcastIntent = new Intent("com.example.myapp.SERVICE_DONE");
                     broadcastIntent.putExtra("data", temperature);
@@ -76,7 +80,7 @@ public class ApiFetchService extends Service implements WeatherAPIFetch {
             }
 
             @Override
-            public void onFailure(Call<WeatherResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<WeatherResponse> call, @NonNull Throwable t) {
                 t.printStackTrace();
             }
         });

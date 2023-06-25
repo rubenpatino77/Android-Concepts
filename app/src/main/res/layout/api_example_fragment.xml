@@ -24,12 +24,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_city"
             android:layout_marginHorizontal="25dp"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:autofillHints="city"
+            android:inputType="text" />
         <TextView
             android:id="@+id/tempDisplay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text=" "
+            android:text=""
             android:textAlignment="center"
             android:textSize="20sp"/>
 

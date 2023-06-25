@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -29,7 +28,7 @@ public class ApiExampleFragment extends Fragment{
     TextView tempDisplay;
     EditText cityEditText;
 
-    private BroadcastReceiver serviceDoneReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver serviceDoneReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             // Service is done. Extract the string data from the intent
@@ -38,7 +37,8 @@ public class ApiExampleFragment extends Fragment{
             if(Objects.equals(data, "Location not found.")){
                 tempDisplay.setText(data);
             } else {
-                tempDisplay.setText(data + " " + "\u00B0" + "F");
+                String temperatureString = getString(R.string.fahrenheit_format, data);
+                tempDisplay.setText(temperatureString);
             }
 
         }
@@ -52,24 +52,21 @@ public class ApiExampleFragment extends Fragment{
         cityEditText = view.findViewById(R.id.fetchApiEditText);
 
         cityEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-        cityEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    String city = cityEditText.getText().toString().trim();
+        cityEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                String city = cityEditText.getText().toString().trim();
 
-                    if (!city.isEmpty()) {
-                        ApiFetchService service = new ApiFetchService();
-                        Intent intent = new Intent(getContext(), service.getClass());
-                        intent.putExtra("location", city);
-                        getContext().startService(intent);
-                        return true; // Consume the event
-                    } else {
-                        Toast.makeText(getContext(), "Please enter a city", Toast.LENGTH_SHORT).show();
-                    }
+                if (!city.isEmpty()) {
+                    ApiFetchService service = new ApiFetchService();
+                    Intent intent = new Intent(getContext(), service.getClass());
+                    intent.putExtra("location", city);
+                    requireContext().startService(intent);
+                    return true; // Consume the event
+                } else {
+                    Toast.makeText(getContext(), "Please enter a city", Toast.LENGTH_SHORT).show();
                 }
-                return false; // Let the system handle the event
             }
+            return false; // Let the system handle the event
         });
 
 
@@ -77,14 +74,14 @@ public class ApiExampleFragment extends Fragment{
 
 
         IntentFilter filter = new IntentFilter("com.example.myapp.SERVICE_DONE");
-        getActivity().registerReceiver(serviceDoneReceiver, filter);
+        requireActivity().registerReceiver(serviceDoneReceiver, filter);
 
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getActivity().unregisterReceiver(serviceDoneReceiver);
+        requireActivity().unregisterReceiver(serviceDoneReceiver);
     }
 }
 
