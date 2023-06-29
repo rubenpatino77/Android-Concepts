@@ -38,12 +38,12 @@ public class LocalDataSenderFragment extends Fragment {
             sendArrayObject(arr1);
         });
 
-        arr2Button.setOnClickListener(view12 -> {
+        arr2Button.setOnClickListener(view2 -> {
             int[] arr2 = {3, 2, 1};
             sendArrayObject(arr2);
         });
 
-        arr3Button.setOnClickListener(view13 -> {
+        arr3Button.setOnClickListener(view3 -> {
             int[] arr3 = {0, 0, 0};
             sendArrayObject(arr3);
         });
@@ -55,6 +55,6 @@ public class LocalDataSenderFragment extends Fragment {
         bundle.putIntArray("arr", arr);
         receiverFragment.setArguments(bundle);
 
-        getActivity().getSupportFragmentManager().beginTransaction().replace(getId()+1, receiverFragment).commit();
+        requireActivity().getSupportFragmentManager().beginTransaction().replace(getId()+1, receiverFragment).commit();
     }
 }

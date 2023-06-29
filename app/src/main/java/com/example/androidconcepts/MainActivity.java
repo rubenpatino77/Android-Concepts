@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentsList.add(new LocalDataSenderFragment());
         fragmentsList.add(new LocalDataReceiverFragment());
         fragmentsList.add(new ApiExampleFragment());
+        fragmentsList.add(new ContentProviderFragment());
     }
 
     public void displayRecyclerViews(ArrayList<Fragment> fragmentsList){

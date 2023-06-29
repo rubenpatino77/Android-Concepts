@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_contact_prompt"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/inputContactName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/contact_name_hint"
+            android:layout_marginHorizontal="25dp"
+            android:textAlignment="center"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:textSize="15sp"
+            android:padding="0dp"/>
+
+        <EditText
+            android:id="@+id/inputPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number_hint"
+            android:layout_marginHorizontal="25dp"
+            android:textAlignment="center"
+            android:inputType="phone"
+            android:imeOptions="actionDone"
+            android:textSize="15sp"
+            android:padding="0dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_contact_prompt"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/contentResolverButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resolve_content"
+            android:textAlignment="center"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/contactReceived"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:textColor="@color/design_default_color_primary_dark"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

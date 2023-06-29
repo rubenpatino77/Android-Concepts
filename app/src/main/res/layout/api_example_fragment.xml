@@ -16,7 +16,8 @@
             android:layout_height="match_parent"
             android:text="@string/api_fetch_explanation"
             android:textAlignment="center"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
 
         <EditText
             android:id="@+id/fetchApiEditText"
